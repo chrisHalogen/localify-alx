@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Localify - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <link rel="icon" href="{{ url_for('static', filename='images/site-icon.png') }}" type="image/x-icon">
+    <script src="{{ url_for('static', filename='js/jquery-3.7.1.min.js') }}"></script>
+</head>
+
+<body>
+    <div id="notification-container"></div>
+
+    <!-- <button id="showSuccess">Show Success</button>
+    <button id="showWarning">Show Warning</button>
+    <button id="showError">Show Error</button> -->
+    <header>
+        <div class="outer-box">
+            <div class="logo-container">
+                <a href="{{ url_for('general.home') }}">
+                    <img src="{{ url_for('static', filename='images/localify3.png') }}" alt="Main-logo">
+                </a>
+
+            </div>
+            <nav id="main-nav">
+                <div class="hamburg" id="close-icon">
+
+                    <img src="{{ url_for('static', filename='images/close-accent.png') }}" alt="hamburg">
+                </div>
+                <ul>
+                    <li><a href="{{ url_for('general.home') }}"
+                            class="{{ 'active' if data['active'] == 1 else '' }}">Home</a>
+                    </li>
+                    <li><a href="{{ url_for('general.about') }}"
+                            class="{{ 'active' if data['active'] == 2 else '' }}">About</a>
+                    </li>
+                    <li><a href="{{ url_for('general.categories') }}"
+                            class="{{ 'active' if data['active'] == 3 else '' }}">Categories</a></li>
+                    <li><a href="{{ url_for('general.contact') }}"
+                            class="{{ 'active' if data['active'] == 4 else '' }}">Contact</a></li>
+
+                    {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('accounts.listings') }}"
+                            class="{{ 'active' if data['active'] == 5 else '' }}">My Account</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('accounts.login') }}">Login</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <div class="hamburg" id="hamburg">
+
+                <img src="{{ url_for('static', filename='images/hamburg.png') }}" alt="hamburg">
+            </div>
+        </div>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <footer>
+        <div class="outer-box">
+            <div class="logo">
+
+                <img src="{{ url_for('static', filename='images/localify3.png') }}" alt="footer-logo">
+                <p>Find what's around you</p>
+            </div>
+            <div class="about">
+                <h2>About</h2>
+                <p>Localify was founded with a clear mission: to bridge the gap between local businesses and their
+                    communities. We envision a world where local businesses thrive, and residents can effortlessly
+                    discover
+                    the hidden gems and trusted services right in their own neighborhoods. <a href="#">Learn More</a>
+                </p>
+            </div>
+            <div class="links">
+                <h2>Useful Links</h2>
+                <nav>
+                    <ul>
+                        <li><a href="{{ url_for('general.home') }}">Home</a></li>
+                        <li><a href="{{ url_for('general.about') }}">About</a></li>
+                        <li><a href="{{ url_for('general.categories') }}">Categories</a></li>
+                        <li><a href="{{ url_for('general.contact') }}">Contact</a></li>
+
+                        {% if current_user.is_authenticated %}
+                        <li><a href="{{ url_for('accounts.listings') }}"
+                                class="{{ 'active' if data['active'] == 5 else '' }}">My Account</a></li>
+                        {% else %}
+                        <li><a href="{{ url_for('accounts.login') }}">Login</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+            <div class="contact">
+                <h2>Contact Us</h2>
+                <p>Got any Questions, Queries or require additional information? </p>
+                <a href="/contact">Contact Us</a>
+            </div>
+        </div>
+        <div class="footer-credit">
+            <p>ALX Sprint 3 Capstone Project built by Christian Chi</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/notification.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

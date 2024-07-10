@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Localify - Find what's around you</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+</head>
+
+<body>
+    <header>
+        <div class="outer-box">
+            <div class="logo-container">
+                <a href="#">
+                    <img src="./assets/localify3.png" alt="Main-logo">
+                </a>
+
+            </div>
+            <nav id="main-nav">
+                <div class="hamburg" id="close-icon">
+                    <img src="./assets/close-accent.png" alt="hamburg">
+                </div>
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+            </nav>
+            <div class="hamburg" id="hamburg">
+                <img src="./assets/hamburg.png" alt="hamburg">
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-page-content">
+        <nav class="sidebar">
+            <ul>
+                <li><a href="#" class="active">My Listings</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+        <div class="content-side">
+            <div class="top-area">
+                <h1>Create New Listing</h1>
+                <a href="#">Save</a>
+            </div>
+            <hr>
+            <div class="create-form">
+                <div class="form-group">
+                    <label for="name">Business Name</label>
+                    <input type="text" name="name" id="name">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" name="address" id="address">
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" name="city" id="city">
+                </div>
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <input type="text" name="state" id="state">
+                </div>
+                <div class="form-group">
+                    <label for="zip_code">Zip Code</label>
+                    <input type="text" name="zip_code" id="zip_code">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="text" name="phone" id="phone">
+                </div>
+                <div class="form-group">
+                    <label for="website">Website</label>
+                    <input type="url" name="website" id="website">
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select name="category" id="category">
+                        <option value="0">Electronics</option>
+                        <option value="0">Electronics</option>
+                        <option value="0">Electronics</option>
+                        <option value="0">Electronics</option>
+                        <option value="0">Electronics</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="logo">Logo</label>
+                    <input type="file" name="logo" id="logo">
+                </div>
+                <div class="form-group">
+                    <label for="cover_photo">Cover Photo</label>
+                    <input type="file" name="cover_photo" id="cover_photo">
+                </div>
+            </div>
+            <a href="#" class="back">Back</a>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="outer-box">
+            <div class="logo">
+                <img src="./assets/localify3.png" alt="footer-logo">
+                <p>Find what's around you</p>
+            </div>
+            <div class="about">
+                <h2>About</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A maxime repudiandae delectus iure nobis
+                    pariatur tempore laboriosam quasi quos necessitatibus animi excepturi iste blanditiis quas
+                    voluptatem
+                    tempora sed voluptatibus ea earum, modi totam unde. Labore omnis asperiores dolore ipsam est
+                    consectetur
+                    ducimus velit! Unde, eaque at reprehenderit cum laboriosam esse! <a href="#">Learn More</a></p>
+            </div>
+            <div class="links">
+                <h2>Useful Links</h2>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Categories</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Login</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="contact">
+                <h2>Contact Us</h2>
+                <p>Got any Questions, Queries or require additional information? </p>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+        <div class="footer-credit">
+            <p>ALX Sprint 3 Capstone Project built by Christian Chi</p>
+        </div>
+    </footer>
+    <script src="./scripts/main.js"></script>
+</body>
+
+</html>

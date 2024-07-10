@@ -1,0 +1,92 @@
+{% extends "./general.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="home-page-content">
+    <div class="filters">
+        <form id="search-filters-form">
+            <div class="input-field-search">
+                <input type="text" name="search-term" id="search-term" placeholder="Find any Business">
+            </div>
+
+            <div class="search-filters">
+                <div class="form-group">
+                    <!-- <p>Select Category</p>  -->
+                    <select name="category" id="category">
+                        <option value="0">Select Category</option>
+                        {% for category in data["categories"] %}
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <!-- <p>Select Address</p> -->
+                    <input type="text" name="address" id="address" placeholder="By Address">
+                </div>
+
+                <div class="form-group">
+                    <!-- <p>Select City</p> -->
+                    <input type="text" name="city" id="city" placeholder="By City">
+                </div>
+
+                <div class="form-group">
+                    <!-- <p>Select City</p> -->
+                    <input type="text" name="state" id="state" placeholder="By State">
+                </div>
+
+                <!-- <p>Select City</p>
+                <p>Select State</p> -->
+            </div>
+
+            <div class="btn">
+                <button type="submit" id="btn-search">Search</button>
+            </div>
+        </form>
+    </div>
+    <div class="listing-items" id="home-listing">
+        <!-- <div class="single">
+
+            <img src="{{ url_for('static', filename='images/electronics.jpg') }}" alt="single">
+            <div class="info">
+                <p class="title">Infesox Electronics</p>
+                <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet voluptate
+                    consequuntur praesentium illo facilis accusantium odit vero illum ipsa libero!</p>
+                <a href="#" class="learn-more">View Profile</a>
+            </div>
+
+        </div>
+
+        <div class="single">
+            <img src="{{ url_for('static', filename='images/electronics.jpg') }}" alt="single">
+            <div class="info">
+                <p class="title">Infesox Electronics</p>
+                <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet voluptate
+                    consequuntur praesentium illo facilis accusantium odit vero illum ipsa libero!</p>
+                <a href="#" class="learn-more">Learn More >>></a>
+            </div>
+
+        </div>
+
+        <div class="single">
+            <img src="{{ url_for('static', filename='images/electronics.jpg') }}" alt="single">
+            <div class="info">
+                <p class="title">Infesox Electronics</p>
+                <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet voluptate
+                    consequuntur praesentium illo facilis accusantium odit vero illum ipsa libero!</p>
+                <a href="#" class="learn-more">Learn More >>></a>
+            </div>
+
+        </div> -->
+
+
+    </div>
+    <div class="pagination">
+        <div class="btns-container" id="pagination">
+            <!-- <button>Previous</button>
+            <button>Next</button> -->
+        </div>
+    </div>
+</div>
+{% endblock %}

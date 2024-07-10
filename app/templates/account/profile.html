@@ -1,0 +1,29 @@
+{% extends "./accountBase.html" %}
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+<div class="content-side">
+    <div class="top-area">
+        <h1>My Profile</h1>
+        <a href="{{url_for('accounts.edit_profile')}}">Edit</a>
+    </div>
+    <hr>
+    <div class="user-profile">
+        <div class="data-group">
+            <p class="data-key">Username</p>
+            <p class="data-value">{{data["user"].username}}</p>
+        </div>
+        <div class="data-group">
+            <p class="data-key">Email</p>
+            <p class="data-value">{{data["user"].email}}</p>
+        </div>
+        <div class="data-group">
+            <p class="data-key">Business Status?</p>
+            <p class="data-value">{{data["user"].is_business}}</p>
+        </div>
+
+    </div>
+    <!-- <a href="#" class="back">Back</a> -->
+
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "./accountBase.html" %}
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+<div class="content-side">
+    <div class="top-area">
+        <h1>Edit Listing</h1>
+        <!-- <a href="#">Save</a> -->
+        <button id="btn-edit-profile" data-id="{{ data['user'].id }}">Save</button>
+    </div>
+    <hr>
+    <div class="create-form">
+        <div class="form-group">
+            <label for="name">Username</label>
+            <input type="text" name="username" id="username" value="{{data['user'].username}}">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" value="{{data['user'].email}}">
+        </div>
+        <div class="form-group">
+            <label for="is-business">Are you a Business</label>
+            <input type="checkbox" name="is-business" id="is-business" {% if data['user'].is_business %}checked{% endif
+                %}>
+        </div>
+
+    </div>
+    <a href="{{ url_for('accounts.profile') }}" class="back">Back</a>
+
+</div>
+{% endblock %}

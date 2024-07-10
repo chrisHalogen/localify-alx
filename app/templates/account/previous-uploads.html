@@ -1,0 +1,21 @@
+{% extends "./accountBase.html" %}
+{% block title %}Bulk Upload{% endblock %}
+
+{% block content %}
+<div class="content-side" id="bulk-upload-page">
+    <div class="top-area">
+        <h1>Previous</h1>
+        <a href="{{ url_for('accounts.bulk_upload') }}" class="anchor-link">Go Back</a>
+    </div>
+    <hr>
+
+    {% for file in data["csv_files"] %}
+    <p class="upload-details">{{ file.original_filename }} | {{ file.datetime }} | <a
+            href="/static/uploads/csv/{{ file.filename }}">Download</a></p><br>
+    {% endfor %}
+
+
+
+
+</div>
+{% endblock %}

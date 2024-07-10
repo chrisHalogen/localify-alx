@@ -1,0 +1,54 @@
+{% extends "./general.html" %}
+{% block title %}About{% endblock %}
+
+{% block content %}
+<div class="about-page-content">
+    <div class="hero-area" id="about-hero" style="background-image: url('/static/images/about-hero.jpg');">
+        <div class="overlay"></div>
+        <h1>About Us</h1>
+    </div>
+    <div class="container">
+        <div class="about-us">
+            <p>Localify was founded with a clear mission: to bridge the gap between local businesses and their
+                communities. We envision a world where local businesses thrive, and residents can effortlessly discover
+                the hidden gems and trusted services right in their own neighborhoods. By fostering connections and
+                empowering informed choices, Localify aims to revitalize local economies and cultivate vibrant
+                communities where everyone benefits.</p>
+            <br>
+            <p>Localify is driven by a passionate team of professionals who are dedicated to innovation and user
+                experience. We come from diverse backgrounds, sharing a common love for supporting local businesses and
+                fostering a strong sense of community. Our team is constantly working behind the scenes to improve the
+                platform, expand our reach, and create a valuable resource for both business owners and local residents.
+            </p><br>
+            <p>Localify is more than just a platform - it's a movement. We believe in the power of local businesses to
+                shape the character and soul of our communities. By supporting local, we invest in the future of our
+                neighborhoods and contribute to a more sustainable and vibrant society. Whether you're a business owner
+                looking to connect with local customers or a resident seeking to discover the best your city has to
+                offer, we invite you to join the Localify movement and become a part of something bigger.</p>
+        </div>
+        <div class="image-gallery">
+
+            <img src="{{ url_for('static', filename='images/about-hero.jpg') }}" alt="">
+            <img src="{{ url_for('static', filename='images/electronics.jpg') }}" alt="">
+            <img src="{{ url_for('static', filename='images/about-hero.jpg') }}" alt="">
+            <img src="{{ url_for('static', filename='images/electronics.jpg') }}" alt="">
+            <img src="{{ url_for('static', filename='images/about-hero.jpg') }}" alt="">
+            <img src="{{ url_for('static', filename='images/electronics.jpg') }}" alt="">
+            <img src="{{ url_for('static', filename='images/about-hero.jpg') }}" alt="">
+            <img src="{{ url_for('static', filename='images/electronics.jpg') }}" alt="">
+            <img src="{{ url_for('static', filename='images/about-hero.jpg') }}" alt="">
+            <img src="{{ url_for('static', filename='images/electronics.jpg') }}" alt="">
+            <img src="{{ url_for('static', filename='images/about-hero.jpg') }}" alt="">
+            <img src="{{ url_for('static', filename='images/electronics.jpg') }}" alt="">
+            <img src="{{ url_for('static', filename='images/about-hero.jpg') }}" alt="">
+            <img src="{{ url_for('static', filename='images/electronics.jpg') }}" alt="">
+            <img src="{{ url_for('static', filename='images/about-hero.jpg') }}" alt="">
+        </div>
+
+        <div class="btn-container">
+            <a href="/register">Get Started Today</a>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

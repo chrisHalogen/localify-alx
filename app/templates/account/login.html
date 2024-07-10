@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Localify - Find what's around you</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <script src="{{ url_for('static', filename='js/jquery-3.7.1.min.js') }}"></script>
+</head>
+
+<body>
+    <div id="notification-container"></div>
+    <div class="account-page-content" id="login-page">
+        <div class="col-1" style="background-image: url('/static/images/login.jpg');"></div>
+        <div class="col-2">
+            <div class="box">
+                <h1>Sign In</h1>
+                <p>Provide your login cridentials to access your user area</p>
+                <form method="post" id="login-form">
+                    <input type="text" name="user_id_data" id="user_id_data" placeholder="Username or Email">
+                    <input type="password" name="password" id="password" placeholder="Password">
+                    <div class="btn-container">
+                        <input type="submit" value="Submit" />
+                    </div>
+                </form>
+                <p>Don't have an account? <a href="{{ url_for('accounts.register') }}">Register</a></p>
+
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/notification.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/utils.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

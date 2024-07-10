@@ -1,0 +1,73 @@
+{% extends "./general.html" %}
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+<div class="contact-page-content">
+    <div class="hero-area" id="contact-hero" style="background-image: url('/static/images/contact-hero-img.jpg');">
+        <div class="overlay"></div>
+        <h1>Contact Us</h1>
+    </div>
+    <div class="container">
+        <div class="opening-text">
+            <p>At Localify, we value your feedback and want to ensure you have a smooth experience using our platform.
+                Whether you have a question, suggestion, or need assistance navigating Localify, we're here to help!
+                Here are several ways to connect with our friendly support team:</p>
+
+        </div>
+
+        <div class="icon-boxes">
+            <a class="single" href="mailto:info@localify.com">
+                <div class="icon-container">
+                    <img src="{{ url_for('static', filename='images/email.png') }}" alt="">
+                </div>
+                <p class="title">Email</p>
+                <p class="info">info@localify.com</p>
+            </a>
+
+            <a class="single" href="https://twitter.com/localify">
+                <div class="icon-container">
+                    <img src="{{ url_for('static', filename='images/twitter.png') }}" alt="">
+                </div>
+                <p class="title">Twitter</p>
+                <p class="info">@localify</p>
+            </a>
+
+            <a class="single" href="tel:+2349827837621">
+                <div class="icon-container">
+                    <img src="{{ url_for('static', filename='images/phone.png') }}" alt="">
+                </div>
+                <p class="title">Phone</p>
+                <p class="info">+2349827837621</p>
+            </a>
+
+            <a class="single" href="#">
+                <div class="icon-container">
+                    <img src="{{ url_for('static', filename='images/location.png') }}" alt="">
+                </div>
+                <p class="title">Address</p>
+                <p class="info">No 7, Winton, Bauchi</p>
+            </a>
+
+        </div>
+
+        <div class="contact-form">
+            <p>For specific inquiries or technical issues that require a more detailed explanation, our convenient
+                online support form is the perfect solution. Briefly describe your question or concern, and a member of
+                our dedicated support team will be in touch shortly to provide personalized assistance.</p>
+            <form>
+                <input type="text" name="name" id="name" placeholder="Name">
+                <input type="email" name="email" id="email" placeholder="Email">
+                <input type="text" name="phone" id="phone" placeholder="Phone">
+                <input type="text" name="subject" id="subject" placeholder="Subject">
+                <textarea name="message" id="message" placeholder="Your Message"></textarea>
+                <div class="submit-container">
+                    <input type="submit" value="Send My Message">
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

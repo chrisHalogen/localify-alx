@@ -1,0 +1,56 @@
+{% extends "./accountBase.html" %}
+{% block title %}My Listings{% endblock %}
+
+{% block content %}
+<div class="content-side">
+    <div class="top-area">
+        <h1>My Listings</h1>
+        <a href="{{ url_for('accounts.create_new_listing') }}">Add New</a>
+    </div>
+    <hr>
+    <div class="listings">
+        {% if data["businesses"] %}
+        {% for business in data["businesses"] %}
+        <div class="single-business" data-id="{{ business.id }}">
+            <p class="title">{{ business.name }}</p>
+            <p class="category">{{ business.category.name }}</p>
+            <div class="action">
+                <a href="{{ url_for('accounts.edit_listing', pk=business.id) }}">Edit</a>
+                <button class="delete">Delete</button>
+            </div>
+        </div>
+        {% endfor %}
+
+        {% else %}
+        <p>You have no businesses.</p>
+        {% endif %}
+        <!-- <div class="single-business">
+            <p class="title">Ifesolox International</p>
+            <p class="category">Electronics</p>
+            <div class="action">
+                <a href="#">Edit</a>
+                <a href="#" class="delete">Delete</a>
+            </div>
+        </div>
+        <div class="single-business">
+            <p class="title">Ifesolox International</p>
+            <p class="category">Electronics</p>
+            <div class="action">
+                <a href="#">Edit</a>
+                <a href="#" class="delete">Delete</a>
+            </div>
+        </div> -->
+    </div>
+
+    {% if data["businesses"]|length > 6 %}
+    <div class="pagination">
+        <div class="btns-container">
+            <button>Previous</button>
+
+            <button>Next</button>
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

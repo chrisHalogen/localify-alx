@@ -1,0 +1,65 @@
+{% extends "./general.html" %}
+{% block title %}Profile - {{data["business"].name}}{% endblock %}
+
+{% block content %}
+
+
+<div class="profile-page-content">
+    <div class="hero-area" id="profile-hero" style="background-image: url('/static/images/profile.jpg');">
+        <div class="overlay"></div>
+        <h1>Business Profile</h1>
+    </div>
+
+    <div class="container">
+        <div class="business-card">
+            <img src="/static/uploads/{{data['business'].cover_photo}}" alt="cover-photo"
+                onerror="this.onerror=null; this.src='/static/images/placeholder.webp';">
+            <div class="logo-container">
+                <img src="/static/uploads/{{data['business'].logo}}" alt="business-logo"
+                    onerror="this.onerror=null; this.src='/static/images/user-temp.jpg';">
+            </div>
+            <div class="card-info-box">
+                <p class="business-name">{{data['business'].name}}</p>
+                {% if data['business'].description %}
+                <p class="description">
+                    {{data['business'].description}}
+                </p>
+                {% endif %}
+
+                <div class="card-foot">
+                    <div class="address">
+                        <p class="card-foot-title">Location</p>
+                        <p class="card-foot-item"><span class="key">Address:</span> <span>{{ data['business'].address |
+                                default("Data Unavailable") }}</span></p>
+                        <p class="card-foot-item"><span class="key">City:</span> <span>{{ data['business'].city |
+                                default("Data Unavailable") }}</span></p>
+                        <p class="card-foot-item"><span class="key">State:</span> <span>{{ data['business'].state |
+                                default("Data Unavailable") }}</span></p>
+                        <p class="card-foot-item"><span class="key">Zip Code:</span> <span>{{ data['business'].zip_code
+                                | default("Data Unavailable") }}</span></p>
+                    </div>
+                    <div class="contact">
+                        <p class="card-foot-title">Contact</p>
+                        <p class="card-foot-item"><span class="key">Website:</span> <span>{{ data['business'].website |
+                                default("Data Unavailable") }}</span></p>
+                        <p class="card-foot-item"><span class="key">Phone:</span> <span>{{ data['business'].phone_number
+                                |
+                                default("Data Unavailable") }}</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="ctas">
+                {% if data['business'].phone_number %}
+                <a href="tel:{{data['business'].phone_number}}">Call</a>
+                {% endif %}
+
+                {% if data['business'].website %}
+                <a href="tel:{{data['business'].website}}" target="_blank">Visit Website</a>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

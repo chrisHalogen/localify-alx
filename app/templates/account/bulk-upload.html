@@ -1,0 +1,31 @@
+{% extends "./accountBase.html" %}
+{% block title %}Bulk Upload{% endblock %}
+
+{% block content %}
+<div class="content-side" id="bulk-upload-page">
+    <div class="top-area">
+        <h1>Bulk Upload</h1>
+        <button id="create-new-upload">Upload</button>
+    </div>
+    <hr>
+    <a href="{{ url_for('static', filename='general/template.csv') }}">Download Template</a><br>
+    <a href="{{ url_for('static', filename='general/sample-data.csv') }}">Download Sample</a><br>
+    <a href="{{ url_for('static', filename='general/docs.pdf') }}">Download Documentation of Fields</a><br>
+    <a href="{{ url_for('accounts.previous_uploads') }}">Previous Uploads</a><br><br>
+    <div class="create-form">
+
+        <div class="form-group">
+            <label for="data">Data(CSV only)</label>
+            <input type="file" name="data" id="data">
+
+        </div>
+    </div>
+
+    <div class="logs">
+        <p>Action Logs</p>
+        <textarea name="logs" id="action_log">Logs</textarea>
+    </div>
+
+
+</div>
+{% endblock %}

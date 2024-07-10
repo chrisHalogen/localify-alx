@@ -1,0 +1,67 @@
+{% extends "./general.html" %}
+{% block title %}Categories{% endblock %}
+
+{% block content %}
+<div class="categories-page-content">
+    <div class="hero-area" id="contact-hero" style="background-image: url('/static/images/categories.jpg');">
+        <div class="overlay"></div>
+        <h1>Categories</h1>
+    </div>
+    <div class="container">
+        <div class="opening-text">
+            <p>Welcome to your one-stop shop for discovering everything your local community has to offer! Localify
+                boasts a comprehensive collection of businesses categorized for your convenience. Whether you're craving
+                a delicious meal, seeking a reliable service provider, or searching for a fun activity, browse our
+                extensive categories and find the perfect local business to fulfill your needs. Get ready to embark on a
+                journey of local exploration - Let's Localify!.</p>
+
+        </div>
+
+        <div class="icon-boxes">
+            {% for item in data["categories"] %}
+            <a class="single" href="{{ url_for('general.categories_details', cat_id=item.id) }}">
+                <div class="icon-container">
+                    <img src="{{ url_for('static', filename='images/category-icon.png') }}" alt="">
+                </div>
+                <p class="title">{{item.name}}</p>
+
+            </a>
+            {% endfor %}
+
+            <!-- <a class="single" href="#">
+                <div class="icon-container">
+                    <img src="{{ url_for('static', filename='images/category-icon.png') }}" alt="">
+                </div>
+                <p class="title">Email</p>
+
+            </a>
+
+            <a class="single" href="#">
+                <div class="icon-container">
+                    <img src="{{ url_for('static', filename='images/category-icon.png') }}" alt="">
+                </div>
+                <p class="title">Email</p>
+
+            </a>
+
+            <a class="single" href="#">
+                <div class="icon-container">
+                    <img src="{{ url_for('static', filename='images/category-icon.png') }}" alt="">
+                </div>
+                <p class="title">Email</p>
+
+            </a>
+
+            <a class="single" href="#">
+                <div class="icon-container">
+                    <img src="{{ url_for('static', filename='images/category-icon.png') }}" alt="">
+                </div>
+                <p class="title">Email</p>
+
+            </a> -->
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

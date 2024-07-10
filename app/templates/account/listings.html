@@ -1,0 +1,42 @@
+{% extends "./accountBase.html" %}
+{% block title %}My Listings{% endblock %}
+
+{% block content %}
+<div class="content-side" id="listings-page">
+    <div class="top-area">
+        <h1>My Listings</h1>
+        <a href="{{ url_for('accounts.create_new_listing') }}">Add New</a>
+    </div>
+    <hr>
+    <div class="listings">
+
+        <!-- <div class="single-business">
+            <p class="title">Ifesolox International</p>
+            <p class="category">Electronics</p>
+            <div class="action">
+                <a href="#">Edit</a>
+                <a href="#" class="delete">Delete</a>
+            </div>
+        </div>
+        <div class="single-business">
+            <p class="title">Ifesolox International</p>
+            <p class="category">Electronics</p>
+            <div class="action">
+                <a href="#">Edit</a>
+                <a href="#" class="delete">Delete</a>
+            </div>
+        </div> -->
+    </div>
+
+
+    <div class="pagination" {% if data["businesses"]|length < 7 %}style="display:none" {% endif %}>
+        <div class="btns-container" id="pagination">
+            <!-- <button>Previous</button>
+
+            <button>Next</button> -->
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}

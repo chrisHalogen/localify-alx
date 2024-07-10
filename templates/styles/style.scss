@@ -1,0 +1,1382 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+
+// Colors
+$primary: #20c997;
+$secondary: #202020;
+$text: #333333;
+$accent: #f08030;
+$aux-accent: #98501c;
+$white: #ffffff;
+$off-white: #f0f0f0;
+$red: #d11a2a;
+
+$breakpoint-480: 480px;
+$breakpoint-600: 600px;
+$breakpoint-900: 900px;
+$breakpoint-1200: 1200px;
+
+@mixin below-1200 {
+  @media (max-width: $breakpoint-1200) {
+    @content;
+  }
+}
+
+@mixin below-900 {
+  @media (max-width: $breakpoint-900) {
+    @content;
+  }
+}
+
+@mixin below-600 {
+  @media (max-width: $breakpoint-600) {
+    @content;
+  }
+}
+
+@mixin below-480 {
+  @media (max-width: $breakpoint-480) {
+    @content;
+  }
+}
+
+@mixin below-screen($width: 767px) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin poppins-medium {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@mixin poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@mixin title-text {
+  font-weight: 700;
+  font-size: 5rem;
+  line-height: 1.1;
+
+  @include below-900() {
+    font-size: 3.5rem;
+  }
+
+  @include below-480() {
+    font-size: 2.5rem;
+  }
+}
+
+@mixin header-text {
+  font-weight: 700;
+  font-size: 3.5rem;
+
+  @include below-900() {
+    font-size: 2.75rem;
+  }
+
+  @include below-480() {
+    font-size: 2.25rem;
+  }
+}
+
+@mixin regular-text {
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+@mixin inner-box() {
+  width: 100%;
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@mixin flex-container {
+  @include inner-box();
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include below-1200() {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@mixin main-button {
+  background-color: $accent;
+  padding: 0.8rem 2rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  color: $white;
+  margin-top: 2rem;
+  cursor: pointer;
+  @include poppins-bold();
+  transition: 0.25s ease;
+
+  &:hover {
+    background-color: $secondary;
+  }
+}
+
+@mixin line-button() {
+  text-decoration: none;
+  color: $accent;
+  @include poppins-medium();
+  transition: 0.25s ease;
+  cursor: pointer;
+
+  &:hover {
+    color: $secondary;
+  }
+}
+
+@mixin margin-lr-auto() {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin image-cover-center() {
+  object-fit: cover;
+  object-position: center;
+}
+
+@mixin box-shadow() {
+  box-shadow: 0px 6px 1rem 3px rgba($color: #000000, $alpha: 0.1);
+}
+
+@mixin background-image($bg_color: $primary, $height: 500px) {
+  // background-image: url("./../assets/about-hero.jpg"); /* The image used */
+  background-color: $bg_color;
+  height: $height;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  @include poppins-regular();
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="url"],
+textarea {
+  border: none;
+  outline: none;
+  width: 100%;
+  border-radius: 2rem;
+  padding: 1rem 1.5rem;
+  background-color: #f3f3f3;
+  font-size: 1.25rem;
+  @include poppins-regular();
+}
+
+select {
+  appearance: none;
+  /* safari */
+  -webkit-appearance: none;
+  /* other styles for aesthetics */
+  // margin-bottom: 10px;
+  // margin-top: 10px;
+  outline: 0;
+  // color: #fff;
+  padding: 4px;
+  border-radius: 9px;
+
+  // ---------------
+  border: none;
+  outline: none;
+  width: 100%;
+  border-radius: 2rem;
+  background-color: #f3f3f3;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+}
+
+// General Styling
+header {
+  // Main Header
+  background-color: $primary;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+
+  .outer-box {
+    @include flex-container();
+
+    .hamburg {
+      background-color: $accent;
+      padding: 0.8rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 3rem;
+      height: 3rem;
+      cursor: pointer;
+      border-radius: 0.25rem;
+      transition: 0.25s ease;
+      display: none;
+
+      &#close-icon {
+        background-color: white;
+        margin-bottom: 2rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      @include below-screen(1000px) {
+        display: flex;
+      }
+
+      &:hover {
+        background-color: $secondary;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    nav {
+      margin-left: auto;
+      @include below-screen(1000px) {
+        display: block;
+        position: fixed;
+        width: 17.5rem;
+        background-color: $accent;
+        top: 0;
+        left: -17.5rem;
+        padding: 3rem 2rem;
+        height: 100vh;
+        z-index: 20;
+        transition: 0.25s ease;
+
+        &.open-nav {
+          left: 0;
+        }
+      }
+
+      ul {
+        list-style-type: none;
+
+        li {
+          display: inline;
+          @include below-screen(1000px) {
+            display: flex;
+            justify-content: center;
+          }
+
+          a {
+            margin: 0.8rem 1.5rem;
+            // margin: 0;
+
+            font-size: 1rem;
+            text-decoration: none;
+            @include poppins-medium();
+            color: $white;
+            border-bottom: 4px solid transparent;
+            padding-bottom: 4px;
+            transition: 0.25s ease;
+
+            @include below-screen(1000px) {
+              text-align: center;
+              padding-bottom: 0px;
+            }
+
+            @include below-screen(1000px) {
+              color: $white;
+            }
+
+            &:hover {
+              // color: $accent;
+              border-bottom: 4px solid $accent;
+            }
+
+            &.active {
+              // color: $accent;
+              border-bottom: 4px solid $accent;
+
+              @include below-screen(1000px) {
+                color: $secondary;
+              }
+            }
+
+            &.hide-on-desktop {
+              display: none;
+            }
+          }
+
+          // &:nth-last-child(2),
+          // &:last-child {
+          //   display: none;
+          // }
+        }
+      }
+    }
+
+    .logo-container {
+      img {
+        @include below-480() {
+          width: 200px;
+        }
+
+        @include below-screen(380px) {
+          width: 150px;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  // Footer Styling
+  background-color: $primary;
+  padding-top: 4rem;
+  // padding-bottom: 1.5rem;
+
+  .outer-box {
+    @include inner-box();
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    gap: 3rem;
+    color: $white;
+    font-size: 0.85rem;
+    padding-bottom: 4rem;
+
+    @include below-1200() {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    @include below-screen(1100px) {
+      grid-template-columns: 2fr 3fr;
+    }
+
+    @include below-900() {
+      grid-template-columns: 1fr;
+    }
+
+    @include below-600() {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    h2 {
+      @include poppins-bold();
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+
+      @include below-1200() {
+        font-size: 1.5rem;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: $accent;
+      @include poppins-medium();
+      transition: 0.25s ease;
+
+      &:hover {
+        color: $secondary;
+      }
+    }
+
+    .links {
+      nav {
+        margin-left: auto;
+        ul {
+          list-style-type: none;
+
+          li {
+            // display: inline;
+            margin-bottom: 0.5rem;
+            a {
+              // margin: 0.8rem 1.5rem;
+
+              padding-left: 0.5rem;
+              // font-size: 1rem;
+              text-decoration: none;
+              // @include poppins-regular();
+              color: $white;
+              border-left: 4px solid transparent;
+              transition: 0.25s ease;
+
+              &:hover {
+                border-left: 4px solid $accent;
+              }
+
+              &.hide-on-desktop {
+                display: none;
+              }
+            }
+
+            // &:nth-last-child(2),
+            // &:last-child {
+            //   display: none;
+            // }
+          }
+        }
+      }
+    }
+
+    .contact {
+      p {
+        margin-bottom: 2rem;
+      }
+      a {
+        @include main-button();
+      }
+    }
+
+    .logo {
+      p {
+        text-align: center;
+        @include poppins-medium();
+        @include below-900() {
+          text-align: left;
+        }
+      }
+      img {
+        @include below-480() {
+          width: 250px;
+        }
+
+        @include below-screen(380px) {
+          width: 200px;
+        }
+      }
+    }
+  }
+
+  .footer-credit {
+    background-color: $accent;
+    padding: 0.65rem 2rem;
+
+    p {
+      text-align: center;
+      @include poppins-medium();
+      font-size: 0.85rem;
+      color: $white;
+    }
+  }
+}
+
+.hero-area {
+  // background-image: url("./../assets/about-hero.jpg"); /* The image used */
+  background-color: $primary; /* Used if the image is unavailable */
+  height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include below-480() {
+    height: 350px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: $secondary, $alpha: 0.7);
+    z-index: 5;
+  }
+
+  h1 {
+    @include title-text();
+    color: $white;
+    z-index: 10;
+    text-align: center;
+  }
+}
+
+.opening-text {
+  padding: 4rem;
+
+  @include below-600() {
+    padding: 2rem;
+  }
+
+  @include below-480() {
+    padding: 2rem 1rem;
+  }
+
+  p {
+    text-align: center;
+    @include poppins-regular();
+    font-size: 1rem;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
+.icon-boxes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+
+  @include below-1200() {
+    width: 100%;
+    max-width: 700px;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 auto;
+    margin-bottom: 3rem;
+  }
+
+  @include below-screen(767px) {
+    padding: 0 2rem;
+  }
+
+  @include below-600() {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  a {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0px 6px 1rem 3px rgba($color: #000000, $alpha: 0.1);
+    border-radius: 1rem;
+    padding: 2rem;
+
+    .icon-container {
+      margin: 0 auto;
+      width: 5rem;
+      height: 5rem;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $accent;
+      border-radius: 3rem;
+      margin-bottom: 1.5rem;
+
+      img {
+        width: 1.75rem;
+        height: 1.75rem;
+      }
+    }
+
+    .title {
+      font-size: 2rem;
+      color: $secondary;
+      text-align: center;
+      @include poppins-bold();
+      margin-bottom: 0.5rem;
+
+      @include below-600() {
+        font-size: 1.5rem;
+      }
+
+      @include below-600() {
+        font-size: 1.25rem;
+      }
+    }
+
+    .info {
+      font-size: 1.25rem;
+      color: $text;
+      text-align: center;
+      @include poppins-regular();
+
+      @include below-600() {
+        font-size: 1rem;
+      }
+
+      @include below-600() {
+        font-size: 0.85rem;
+      }
+    }
+  }
+}
+
+.listing-items {
+  margin: 4rem 2rem;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+
+  @include below-900() {
+    grid-template-columns: 1fr;
+  }
+
+  .single {
+    border-radius: 0.5rem;
+    box-shadow: 0px 6px 1rem 3px rgba($color: #000000, $alpha: 0.1);
+
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 0.5rem 0 0 0.5rem;
+    }
+
+    .info {
+      padding: 1.5rem;
+
+      .title {
+        @include poppins-bold();
+        font-size: 1.5rem;
+        color: $accent;
+      }
+
+      .description {
+        @include poppins-regular();
+        font-size: 0.85rem;
+        color: $text;
+        margin: 0.8rem 0;
+      }
+
+      .learn-more {
+        @include line-button();
+      }
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+
+  .btns-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    button {
+      @include main-button();
+      outline: none;
+      border: none;
+      @include poppins-medium();
+      font-size: 1.25rem;
+      cursor: pointer;
+      padding: 1rem;
+      border-radius: 0.5rem;
+    }
+  }
+}
+
+.container {
+  @include inner-box();
+}
+
+// Home Page Styling
+.home-page-content {
+  @include inner-box();
+
+  .filters {
+    margin: 2rem;
+    form {
+      display: block;
+
+      .input-field-search {
+        width: 90%;
+        max-width: 650px;
+        margin: 0 auto;
+
+        @include below-600() {
+          width: 100%;
+        }
+      }
+
+      .search-filters {
+        margin: 2rem 0;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+
+        @include below-1200() {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include below-600() {
+          grid-template-columns: 1fr;
+        }
+
+        input[type="text"] {
+          padding: 0.85rem 1.2rem;
+          font-size: 1rem;
+        }
+      }
+
+      .btn {
+        display: flex;
+        justify-content: center;
+
+        button {
+          @include main-button();
+          outline: none;
+          border: none;
+          @include poppins-medium();
+          font-size: 1.25rem;
+          margin-top: 0;
+          cursor: pointer;
+          padding: 0.8rem 4rem;
+        }
+      }
+    }
+  }
+}
+
+// About Page Styling
+.about-page-content {
+  .container {
+    @include inner-box();
+  }
+
+  #about-hero {
+    background-image: url("./../assets/about-hero.jpg"); /* The image used */
+  }
+
+  .about-us {
+    padding: 4rem;
+
+    @include below-600() {
+      padding: 2rem;
+    }
+
+    @include below-480() {
+      padding: 2rem 1rem;
+    }
+
+    p {
+      text-align: center;
+      @include poppins-regular();
+      font-size: 1rem;
+    }
+  }
+
+  .image-gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    // grid-template-rows: auto auto;
+    // grid-auto-rows: 0px;
+    // position: relative;
+    // overflow: hidden;
+
+    @include below-900() {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, auto);
+      grid-auto-rows: 0px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @include below-600() {
+      grid-template-columns: repeat(3, 1fr);
+      // grid-template-rows: repeat(3, auto);
+    }
+    @include below-480() {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, auto);
+    }
+
+    img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    padding-top: 2rem;
+
+    @include below-600() {
+      padding: 4rem 1rem;
+    }
+
+    a {
+      @include main-button();
+      @include poppins-medium();
+    }
+  }
+}
+
+// Contact Page Styling
+.contact-page-content {
+  #contact-hero {
+    background-image: url("./../assets/contact-hero-img.jpg"); /* The image used */
+  }
+
+  .contact-icons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+
+    @include below-1200() {
+      width: 100%;
+      max-width: 700px;
+      grid-template-columns: repeat(2, 1fr);
+      margin: 0 auto;
+      margin-bottom: 3rem;
+    }
+
+    @include below-screen(767px) {
+      padding: 0 2rem;
+    }
+
+    @include below-600() {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    a {
+      display: block;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0px 6px 1rem 3px rgba($color: #000000, $alpha: 0.1);
+      border-radius: 1rem;
+      padding: 2rem;
+
+      .icon-container {
+        margin: 0 auto;
+        width: 5rem;
+        height: 5rem;
+        padding: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $accent;
+        border-radius: 3rem;
+        margin-bottom: 1.5rem;
+
+        img {
+          width: 1.75rem;
+          height: 1.75rem;
+        }
+      }
+
+      .title {
+        font-size: 2rem;
+        color: $secondary;
+        text-align: center;
+        @include poppins-bold();
+        margin-bottom: 0.5rem;
+
+        @include below-600() {
+          font-size: 1.5rem;
+        }
+
+        @include below-600() {
+          font-size: 1.25rem;
+        }
+      }
+
+      .info {
+        font-size: 1.25rem;
+        color: $text;
+        text-align: center;
+        @include poppins-regular();
+
+        @include below-600() {
+          font-size: 1rem;
+        }
+
+        @include below-600() {
+          font-size: 0.85rem;
+        }
+      }
+    }
+  }
+
+  .contact-form {
+    margin: 4rem auto;
+    width: 90%;
+    max-width: 700px;
+
+    p {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      font-size: 1rem;
+      margin: 1rem 0;
+    }
+
+    textarea {
+      resize: none;
+      height: 20rem;
+    }
+
+    .submit-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    input[type="submit"] {
+      @include main-button();
+      outline: none;
+      border: none;
+    }
+  }
+}
+
+.categories-page-content {
+  #categories-hero {
+    background-image: url("./../assets/categories.jpg"); /* The image used */
+  }
+}
+
+.profile-page-content {
+  #profile-hero {
+    background-image: url("./../assets/profile.jpg"); /* The image used */
+  }
+
+  .business-card {
+    width: 85%;
+    max-width: 750px;
+    margin: 4rem auto;
+    border-radius: 1rem;
+    @include box-shadow();
+
+    @include below-600() {
+      width: 92.5%;
+    }
+
+    & > img {
+      width: 100%;
+      height: 15rem;
+      @include image-cover-center();
+      border-radius: 1rem 1rem 0 0;
+      z-index: 3;
+    }
+
+    .logo-container {
+      width: 12.5rem;
+      height: 12.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include margin-lr-auto();
+      border: 1.5rem solid $accent;
+      border-radius: 100%;
+      background-color: $white;
+      margin-top: -7.5rem;
+      z-index: 15;
+      position: relative;
+      margin-bottom: 1rem;
+      transition: 0.25s ease;
+
+      @include below-600() {
+        width: 10rem;
+        height: 10rem;
+        margin-top: -5rem;
+      }
+
+      &:hover {
+        border: 1.5rem solid $secondary;
+      }
+
+      img {
+        width: 7.5rem;
+        height: 7.5rem;
+        @include image-cover-center();
+
+        @include below-600() {
+          width: 6rem;
+          height: 6rem;
+        }
+      }
+    }
+
+    .card-info-box {
+      padding: 1rem 2rem;
+
+      @include below-600() {
+        padding: 1rem 1rem;
+      }
+
+      .business-name {
+        @include poppins-bold();
+        font-size: 2.5rem;
+        text-align: center;
+        color: $secondary;
+
+        @include below-900() {
+          font-size: 2rem;
+        }
+
+        @include below-600() {
+          font-size: 1.75rem;
+        }
+
+        @include below-480() {
+          font-size: 1.5rem;
+        }
+      }
+
+      .description {
+        @include poppins-regular();
+        text-align: center;
+        color: $text;
+        font-size: 1rem;
+      }
+
+      .card-foot {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        margin-top: 1rem;
+
+        @include below-screen(767px) {
+          grid-template-columns: 1fr;
+        }
+
+        .card-foot-title {
+          @include poppins-medium();
+          font-size: 1.5rem;
+          color: $secondary;
+          margin-bottom: 0.5rem;
+        }
+
+        .card-foot-item {
+          @include poppins-regular();
+          color: $text;
+          font-size: 1rem;
+          display: grid;
+          grid-template-columns: 7.4rem auto;
+          gap: 0.25rem;
+
+          span.key {
+            @include poppins-bold();
+          }
+        }
+      }
+    }
+  }
+}
+
+.account-page-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  height: 100vh;
+
+  @include below-900() {
+    grid-template-columns: 1fr;
+  }
+
+  .col-1 {
+    @include background-image($height: 100vh, $bg_color: $accent);
+    background-image: url("./../assets/register.jpg"); /* The image used */
+
+    @include below-900() {
+      display: none;
+    }
+  }
+
+  .col-2 {
+    background-color: $primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include below-900() {
+      height: 100vh;
+    }
+
+    .box {
+      width: 80%;
+      max-width: 450px;
+      height: fit-content;
+      padding: 2rem;
+      background-color: $white;
+      border-radius: 1.5rem;
+
+      h1 {
+        color: $secondary;
+        font-size: 1.5rem;
+        text-align: center;
+        @include poppins-bold();
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        @include poppins-regular();
+        color: $text;
+        text-align: center;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+      }
+
+      a {
+        @include line-button();
+        @include poppins-bold();
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        margin-bottom: 1rem;
+        font-size: 0.85rem;
+        padding: 0.85rem 1.2rem;
+      }
+
+      .btn-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+
+        input[type="submit"] {
+          @include main-button();
+          outline: none;
+          border: none;
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}
+
+#login-page {
+  .col-1 {
+    background-image: url("./../assets/login.jpg");
+  }
+}
+
+.dashboard-page-content {
+  width: 90%;
+  max-width: 900px;
+  margin: 4rem auto;
+
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+
+  gap: 2rem;
+
+  @include below-900() {
+    grid-template-columns: 1fr;
+  }
+
+  & > :is(div, nav) {
+    border-radius: 0.5rem;
+  }
+
+  nav.sidebar {
+    background-color: $accent;
+    padding: 2rem 1rem;
+    height: fit-content;
+
+    @include below-900() {
+      padding: 1rem;
+    }
+
+    ul {
+      list-style-type: none;
+
+      @include below-900() {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      @include below-600() {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      li {
+        @include below-600() {
+          width: 100%;
+        }
+        a {
+          display: block;
+          padding: 1rem;
+          border-bottom: 4px solid $secondary;
+          margin: 1rem 0;
+          outline: 0;
+          border: 0;
+          text-decoration: none;
+          background-color: $aux-accent;
+          color: $white;
+          border-radius: 0.5rem;
+          transition: 0.25s ease;
+
+          @include below-600() {
+            width: 100%;
+            text-align: left;
+            margin: 0;
+          }
+
+          &:is(:hover, .active) {
+            background-color: $secondary;
+          }
+        }
+      }
+    }
+  }
+
+  .content-side {
+    background-color: $off-white;
+    padding: 2rem 1rem;
+
+    .top-area {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h1 {
+        @include poppins-bold();
+        font-size: 2rem;
+        color: $secondary;
+      }
+
+      a {
+        @include main-button();
+        margin: 0;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+    }
+
+    hr {
+      border-bottom: 2px solid rgba($color: $secondary, $alpha: 0.25);
+      border-top: none;
+      margin: 1rem 0;
+    }
+
+    .listings {
+      .single-business {
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr;
+        @include poppins-regular();
+        align-items: center;
+        margin: 1rem 0;
+
+        .title {
+          font-size: 1.25rem;
+          @include poppins-medium();
+        }
+
+        .category {
+          font-size: 1rem;
+        }
+
+        .action {
+          margin-left: auto;
+        }
+
+        a {
+          @include line-button();
+
+          &.delete {
+            color: $red;
+            margin-left: 1rem;
+          }
+        }
+      }
+    }
+
+    .pagination {
+      margin-bottom: 0;
+      button {
+        padding: 0.5rem 1rem;
+      }
+    }
+
+    .create-form {
+      margin-bottom: 3rem;
+      .form-group {
+        display: grid;
+        grid-template-columns: 10rem auto;
+        align-items: center;
+        margin: 1rem 0;
+
+        input[type="text"],
+        input[type="url"],
+        select,
+        textarea {
+          font-size: 0.9rem;
+          padding: 0.5rem 1rem;
+          background-color: $white;
+          border-radius: 0.25rem;
+          color: $secondary;
+        }
+
+        textarea {
+          resize: none;
+          height: 10rem;
+        }
+
+        // select {
+        //   background-color: $white;
+        // }
+      }
+    }
+
+    .user-profile {
+      margin-bottom: 3rem;
+
+      .data-group {
+        display: grid;
+        grid-template-columns: 10rem auto;
+        align-items: center;
+        margin: 1rem 0;
+
+        .data-key {
+          @include poppins-medium();
+        }
+      }
+    }
+
+    .back {
+      @include main-button();
+      padding: 0.5rem 1.25rem;
+      font-size: 0.75rem;
+      background-color: $secondary;
+
+      &:hover {
+        background-color: rgba($color: $secondary, $alpha: 0.7);
+      }
+    }
+  }
+}

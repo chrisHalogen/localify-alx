@@ -1,0 +1,74 @@
+{% extends "./general.html" %}
+{% block title %}Categories - {{data["category"].name}}{% endblock %}
+
+{% block content %}
+<div class="categories-page-content" id="listings-by-categories-page">
+    <div class="hero-area" id="contact-hero" style="background-image: url('/static/images/categories.jpg');">
+        <div class="overlay"></div>
+        <h1>{{data["category"].name}}</h1>
+    </div>
+    <input type="hidden" name="category-id" id="category-id" value="{{data['category'].id}}">
+    <div class="container">
+        <div class="listing-items">
+            <!-- <div class="single">
+
+                <img src="{{ url_for('static', filename='images/electronics.jpg') }}" alt="single">
+                <div class="info">
+                    <p class="title">Infesox Electronics</p>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet voluptate
+                        consequuntur praesentium illo facilis accusantium odit vero illum ipsa libero!</p>
+                    <a href="#" class="learn-more">View Profile</a>
+                </div>
+
+            </div>
+
+            <div class="single">
+                <img src="{{ url_for('static', filename='images/electronics.jpg') }}" alt="single">
+                <div class="info">
+                    <p class="title">Infesox Electronics</p>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet voluptate
+                        consequuntur praesentium illo facilis accusantium odit vero illum ipsa libero!</p>
+                    <a href="#" class="learn-more">Learn More >>></a>
+                </div>
+
+            </div>
+
+            <div class="single">
+                <img src="{{ url_for('static', filename='images/electronics.jpg') }}" alt="single">
+                <div class="info">
+                    <p class="title">Infesox Electronics</p>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet voluptate
+                        consequuntur praesentium illo facilis accusantium odit vero illum ipsa libero!</p>
+                    <a href="#" class="learn-more">Learn More >>></a>
+                </div>
+
+            </div>
+
+            <div class="single">
+                <img src="{{ url_for('static', filename='images/electronics.jpg') }}" alt="single">
+                <div class="info">
+                    <p class="title">Infesox Electronics</p>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet voluptate
+                        consequuntur praesentium illo facilis accusantium odit vero illum ipsa libero!</p>
+                    <a href="#" class="learn-more">Learn More >>></a>
+                </div>
+
+            </div> -->
+
+
+
+        </div>
+        <div class="pagination">
+            <div class="btns-container" id="pagination">
+                <!-- <button>Previous</button>
+                <button>Next</button> -->
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- <script>function handleImageError(img) {
+        img.onerror = null; // Prevents infinite loop
+        img.src = "/static/images/placeholder.png";
+    }</script> -->
+{% endblock %}
