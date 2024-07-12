@@ -273,32 +273,6 @@ $(document).ready(function () {
     // Get the business ID from the parent .single-business element
     const businessId = $(this).closest(".single-business").data("id");
 
-    // Send AJAX request to delete the business
-    // $.ajax({
-    //   url: "/delete-business",
-    //   method: "DELETE",
-    //   contentType: "application/json",
-    //   data: JSON.stringify({ id: businessId }),
-    //   success: function (response) {
-    //     if (response.status === "success") {
-    //       showNotification("Success", response.message, "success");
-    //       // Reload the page after showing the notification
-    //       setTimeout(function () {
-    //         location.reload();
-    //       }, 2000);
-    //     } else {
-    //       showNotification("Error", response.message, "error");
-    //     }
-    //   },
-    //   error: function (xhr, status, error) {
-    //     showNotification(
-    //       "Error",
-    //       "An unexpected error occurred. Please try again.",
-    //       "error"
-    //     );
-    //   },
-    // });
-
     // Confirm the action with the user
     if (confirm("Are you sure you want to delete this business?")) {
       $.ajax({
@@ -879,12 +853,14 @@ $(document).ready(function () {
       return;
     }
 
-    console.log("Check 3");
+    showNotification(
+      "Success",
+      "Your CSV FIle is being uploaded. Exercise a Little Patience",
+      "success"
+    );
 
     let formData = new FormData();
     formData.append("file", fileInput);
-
-    console.log("Check 4");
 
     $.ajax({
       url: "/upload-csv",
