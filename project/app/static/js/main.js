@@ -1,6 +1,5 @@
 $(document).ready(function () {
   // Open and close mobile menu
-
   $("#close-icon, #hamburg").click(() => {
     $("#main-nav").toggleClass("open-nav");
   });
@@ -442,6 +441,7 @@ $(document).ready(function () {
     });
   });
 
+  // Edit Profile
   $("#btn-edit-profile").on("click", function () {
     console.log("Clicked");
     let userId = $(this).data("id");
@@ -588,6 +588,7 @@ $(document).ready(function () {
     });
   }
 
+  // Listings page
   if ($("#listings-page").length) {
     // Initial load
     loadBusinesses(1);
@@ -712,6 +713,7 @@ $(document).ready(function () {
     });
   }
 
+  // Get listings by category
   if ($("#listings-by-categories-page").length) {
     // Initial load
     let category_id = $("#category-id").val();
@@ -840,6 +842,7 @@ $(document).ready(function () {
     });
   }
 
+  // Home listing
   if ($("#home-listing").length) {
     // Initial load
     loadBusinessesonhomepage(1);
@@ -906,15 +909,14 @@ $(document).ready(function () {
     });
   });
 
+  // Function to validate email
   function isValidEmail(email) {
     let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailPattern.test(email);
   }
 
+  // Function to validate phone
   function validatePhone(phone) {
-    // Simple phone validation (10-15 digits)
-    // const re = /^\d{10,15}$/;
-    // return re.test(String(phone));
     return /^\+?\d{1,14}$/.test(phone);
   }
 

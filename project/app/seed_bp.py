@@ -14,6 +14,7 @@ LOGO_FOLDER = "/home/chris/Downloads/logos"
 COVER_PHOTO_FOLDER = "/home/chris/Downloads/photos"
 
 
+# Seed Categories
 @seed_bp.route("/seed-categories", methods=["GET"])
 def seed_categories():
     try:

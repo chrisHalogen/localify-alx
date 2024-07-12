@@ -6,6 +6,7 @@ import requests
 from datetime import datetime
 
 
+# Check if user exists
 def user_exists(username, email):
     return (
         db.session.query(User.id)
@@ -15,6 +16,7 @@ def user_exists(username, email):
     )
 
 
+# Create new user
 def create_user(username, email, password):
     hashed_password = bcrypt.generate_password_hash(password).decode("utf-8")
     user = User(
@@ -24,6 +26,7 @@ def create_user(username, email, password):
     db.session.commit()
 
 
+# Convert the user object to a dictionary
 def user_to_dict(user):
     return {
         "id": user.id,
@@ -33,6 +36,7 @@ def user_to_dict(user):
     }
 
 
+# Save frile from the internet to the uploads folder
 def save_file(file_path, new_filename):
     try:
         # Open the file in read binary mode
@@ -51,31 +55,13 @@ def save_file(file_path, new_filename):
         return None
 
 
+# Get businesses by category
 def get_businesses_by_category(category_id):
     businesses = Business.query.filter_by(category_id=category_id).all()
     return [business.to_dict() for business in businesses]
 
 
-def save_image_from_url_(url, prefix):
-    try:
-        response = requests.get(url)
-        if response.status_code == 200:
-            upload_folder = os.path.join(os.getcwd(), "app", "static", "uploads")
-            os.makedirs(upload_folder, exist_ok=True)
-
-            filename = f"{prefix}_{datetime.now().strftime('%Y%m%d%H%M%S')}_{secure_filename(url.split('/')[-1])}"
-            file_path = os.path.join(upload_folder, filename)
-
-            with open(file_path, "wb") as file:
-                file.write(response.content)
-            return filename
-        else:
-            return None
-    except Exception as e:
-        print(f"Error downloading image: {e}")
-        return None
-
-
+# Save Image from Url
 def save_image_from_url(url, prefix):
     response = requests.get(url)
     if response.status_code == 200:

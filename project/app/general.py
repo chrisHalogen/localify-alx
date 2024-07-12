@@ -1,12 +1,11 @@
 from flask import Blueprint, render_template, request, jsonify
 from .models import Category, Business
-
-# from .utils import get_businesses_by_category
 from sqlalchemy import or_
 
 general = Blueprint("general", __name__)
 
 
+# Home Route
 @general.route("/")
 def home():
     data = {"active": 1}
@@ -14,12 +13,14 @@ def home():
     return render_template("guest/home.html", data=data)
 
 
+# About Route
 @general.route("/about")
 def about():
     data = {"active": 2}
     return render_template("guest/about.html", data=data)
 
 
+# Categories route
 @general.route("/categories")
 def categories():
     data = {"active": 3}
@@ -27,6 +28,7 @@ def categories():
     return render_template("guest/categories.html", data=data)
 
 
+# Categories route
 @general.route("/categories/<int:cat_id>")
 def categories_details(cat_id):
     data = {"active": 3}
@@ -34,6 +36,7 @@ def categories_details(cat_id):
     return render_template("guest/categories-list.html", data=data)
 
 
+# Business details route
 @general.route("/business-profile/<int:business_id>")
 def business_details(business_id):
     data = {"active": 3}
@@ -41,12 +44,14 @@ def business_details(business_id):
     return render_template("guest/business-profile.html", data=data)
 
 
+# Contact Page
 @general.route("/contact")
 def contact():
     data = {"active": 4}
     return render_template("guest/contact.html", data=data)
 
 
+# Logic to retrieve business by category
 @general.route("/load-businesses-by-category", methods=["GET"])
 def get_user_paginated_data():
     page = request.args.get("page", 1, type=int)
@@ -65,6 +70,7 @@ def get_user_paginated_data():
     return jsonify(data)
 
 
+# Logic to retrieve data for the homepage
 @general.route("/load-businesses-on-home-page", methods=["GET"])
 def load_business_by_search():
     page = request.args.get("page", 1, type=int)

@@ -13,6 +13,7 @@ import csv
 accounts = Blueprint("accounts", __name__)
 
 
+# User Registration Page
 @accounts.route("/register", methods=["GET"])
 def register():
     if current_user.is_authenticated:
@@ -20,6 +21,7 @@ def register():
     return render_template("account/register.html")
 
 
+# User Login Page
 @accounts.route("/login", methods=["GET"])
 def login():
     if current_user.is_authenticated:
@@ -27,12 +29,14 @@ def login():
     return render_template("account/login.html")
 
 
+# Logout Route
 @accounts.route("/logout")
 def logout():
     logout_user()
     return redirect(url_for("general.home"))
 
 
+# User Creation Logic
 @accounts.route("/create-new-user", methods=["POST"])
 def create_new_user():
     data = request.get_json()
@@ -47,13 +51,13 @@ def create_new_user():
     return jsonify(status="success", message="User registered successfully."), 201
 
 
+# User Login Logic
 @accounts.route("/log-user-in", methods=["POST"])
 def log_user_in():
     data = request.get_json()
     user_input = data["user_input"]
     password = data["password"]
 
-    # Check if input is an email or username
     user = User.query.filter(
         (User.email == user_input) | (User.username == user_input)
     ).first()
@@ -65,6 +69,7 @@ def log_user_in():
     return jsonify(status="error", message="Invalid username/email or password."), 401
 
 
+# Listings Dashboard Page
 @accounts.route("/listings")
 @login_required
 def listings():
@@ -73,6 +78,7 @@ def listings():
     return render_template("account/listings.html", data=data)
 
 
+# Render Listings Create Page
 @accounts.route("/listings/create")
 @login_required
 def create_new_listing():
@@ -81,6 +87,7 @@ def create_new_listing():
     return render_template("account/create-new.html", data=data)
 
 
+# Render Profile Page
 @accounts.route("/profile")
 @login_required
 def profile():
@@ -89,6 +96,7 @@ def profile():
     return render_template("account/profile.html", data=data)
 
 
+# Logic to create new business
 @accounts.route("/listings/create-new-business", methods=["POST"])
 @login_required
 def create_new_business():
@@ -170,6 +178,7 @@ def create_new_business():
         return jsonify(status="error", message=str(e)), 500
 
 
+# Logic to Delete Business
 @login_required
 @accounts.route("/delete-business", methods=["DELETE"])
 def delete_business():
@@ -209,6 +218,7 @@ def delete_business():
         )
 
 
+# Listings edit page
 @accounts.route("/listings/edit/<int:pk>")
 @login_required
 def edit_listing(pk):
@@ -218,6 +228,7 @@ def edit_listing(pk):
     return render_template("account/edit.html", data=data)
 
 
+# Logic to Update Business
 @accounts.route("/edit-business/<int:business_id>", methods=["PUT"])
 @login_required
 def edit_business(business_id):
@@ -272,6 +283,7 @@ def edit_business(business_id):
         return jsonify({"status": "error", "message": str(e)}), 500
 
 
+# Render Profile edit page
 @accounts.route("/profile/edit/")
 @login_required
 def edit_profile():
@@ -280,6 +292,7 @@ def edit_profile():
     return render_template("account/edit-profile.html", data=data)
 
 
+# Logic to edit profile
 @accounts.route("/edit-profile", methods=["PUT"])
 @login_required
 def edit_user_profile():
@@ -317,6 +330,7 @@ def edit_user_profile():
     return jsonify({"message": "Profile updated successfully"}), 200
 
 
+# Get user paginated data for the listings on the dashboard
 @accounts.route("/get-user-paginated-data", methods=["GET"])
 @login_required
 def get_user_paginated_data():
@@ -335,6 +349,7 @@ def get_user_paginated_data():
     return jsonify(data)
 
 
+# Render Bulk upload page
 @accounts.route("/bulk-upload")
 @login_required
 def bulk_upload():
@@ -342,6 +357,7 @@ def bulk_upload():
     return render_template("account/bulk-upload.html", data=data)
 
 
+# Logic to upload csv and create businesses
 @accounts.route("/upload-csv", methods=["POST"])
 def upload_csv():
 
@@ -431,6 +447,7 @@ def upload_csv():
     return jsonify({"error": "Invalid file format"}), 400
 
 
+# View to see previous uploads
 @accounts.route("/previous-uploads", methods=["GET"])
 def previous_uploads():
     data = {"active": 5, "tab": 3}
