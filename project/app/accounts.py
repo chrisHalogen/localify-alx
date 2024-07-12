@@ -15,11 +15,15 @@ accounts = Blueprint("accounts", __name__)
 
 @accounts.route("/register", methods=["GET"])
 def register():
+    if current_user.is_authenticated:
+        return redirect(url_for("accounts.listings"))
     return render_template("account/register.html")
 
 
 @accounts.route("/login", methods=["GET"])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for("accounts.listings"))
     return render_template("account/login.html")
 
 

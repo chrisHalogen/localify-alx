@@ -522,7 +522,7 @@ $(document).ready(function () {
             <p class="title">${business.name}</p>
             <p class="category">${business.category}</p>
             <div class="action">
-                <a href="/edit-business/${business.id}">Edit</a>
+                <a href="/listings/edit/${business.id}">Edit</a>
                 <button class="delete">Delete</button>
             </div>
         </div>`
@@ -904,5 +904,68 @@ $(document).ready(function () {
         $("#action_log").val("An error occurred: " + xhr.responseText);
       },
     });
+  });
+
+  function isValidEmail(email) {
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+  }
+
+  function validatePhone(phone) {
+    // Simple phone validation (10-15 digits)
+    // const re = /^\d{10,15}$/;
+    // return re.test(String(phone));
+    return /^\+?\d{1,14}$/.test(phone);
+  }
+
+  // Contact Form
+  $("#contact-form").on("submit", function (event) {
+    event.preventDefault();
+
+    // Extract the form data
+    let name = $("#name").val().trim();
+    let email = $("#email").val().trim();
+    let phone = $("#phone").val().trim();
+    let subject = $("#subject").val().trim();
+    let message = $("#message").val().trim();
+    let errors = [];
+
+    // Validate the data
+    if (name === "") {
+      errors.push("Name is required.");
+    }
+    if (email === "") {
+      errors.push("Email is required.");
+    } else if (!isValidEmail(email)) {
+      errors.push("Email is not valid.");
+    }
+    if (phone === "") {
+      errors.push("Phone number is required.");
+    } else if (!validatePhone(phone)) {
+      errors.push("Phone number is not valid.");
+    }
+    if (subject === "") {
+      errors.push("Subject is required.");
+    }
+    if (message === "") {
+      errors.push("Message is required.");
+    }
+
+    // Check for errors
+    if (errors.length > 0) {
+      showNotification("Error", errors.join("<br>"), "error");
+    } else {
+      // Simulate form submission delay
+      setTimeout(function () {
+        showNotification(
+          "Success",
+          "Your message was received and will be responded to shortly.",
+          "success"
+        );
+        setTimeout(function () {
+          location.reload();
+        }, 2000);
+      }, 2000);
+    }
   });
 });

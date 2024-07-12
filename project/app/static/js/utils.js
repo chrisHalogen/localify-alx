@@ -12,6 +12,12 @@ function isValidInput(input) {
   return isValidEmail(input) || isValidUsername(input);
 }
 
+function validatePhone(phone) {
+  // Simple phone validation (10-15 digits)
+  const re = /^\d{10,15}$/;
+  return re.test(String(phone));
+}
+
 function getQueryParams() {
   let queryParams = {};
   let queryString = window.location.search.substring(1);

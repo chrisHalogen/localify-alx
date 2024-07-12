@@ -704,7 +704,7 @@ footer {
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 
-  @include below-900() {
+  @include below-600() {
     grid-template-columns: 1fr;
   }
 
@@ -715,12 +715,21 @@ footer {
     display: grid;
     grid-template-columns: 1fr 3fr;
 
+    @include below-900() {
+      grid-template-columns: 1fr;
+    }
+
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
       border-radius: 0.5rem 0 0 0.5rem;
+
+      @include below-900() {
+        height: 250px;
+        border-radius: 0.5rem 0.5rem 0 0;
+      }
     }
 
     .info {
@@ -730,6 +739,10 @@ footer {
         @include poppins-bold();
         font-size: 1.5rem;
         color: $accent;
+
+        @include below-600() {
+          font-size: 1.2rem;
+        }
       }
 
       .description {
@@ -757,6 +770,12 @@ footer {
     gap: 1rem;
     flex-wrap: wrap;
 
+    @include below-screen(700px) {
+      gap: 0.75rem;
+      row-gap: 0.25rem;
+      padding: 0 0.5rem;
+    }
+
     button {
       @include main-button();
       outline: none;
@@ -766,6 +785,12 @@ footer {
       cursor: pointer;
       padding: 1rem;
       border-radius: 0.5rem;
+
+      @include below-screen(700px) {
+        font-size: 1rem;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+      }
 
       &.active {
         background-color: $secondary;
@@ -853,14 +878,14 @@ footer {
       padding: 2rem;
     }
 
-    @include below-480() {
-      padding: 2rem 1rem;
-    }
-
     p {
       text-align: center;
       @include poppins-regular();
       font-size: 1rem;
+
+      @include below-480() {
+        font-size: 0.85rem;
+      }
     }
   }
 
@@ -1169,7 +1194,11 @@ footer {
           display: grid;
           grid-template-columns: 7.4rem auto;
           gap: 0.25rem;
+          word-break: break-all;
 
+          @include below-600() {
+            grid-template-columns: 5.25rem auto;
+          }
           span.key {
             @include poppins-bold();
           }
